@@ -1,0 +1,10 @@
+---
+- name: Remove git
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure git is removed
+      yum:
+        name: git
+        state: absent
+

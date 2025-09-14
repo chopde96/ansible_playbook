@@ -1,0 +1,18 @@
+---
+- name: Uninstall all git-related packages from Amazon Linux nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: Remove git and related packages
+      yum:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - git
+        - git-core
+        - git2u
+        - git-all
+      ignore_errors: yes   # in case some packages don't exist
+
+
+
